@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Facts Generator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #fact {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #fff;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #ff7e5f;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #feb47b;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Facts About Mars</h1>
+        <button id="generate">Generate</button>
+        <div id="fact"></div>
+    </div>
+
+    <script>
+        const facts = [
+            "Mars is the fourth planet from the Sun.",
+            "Mars is named after the Roman god of war.",
+            "Mars has two moons: Phobos and Deimos.",
+            "Mars is home to the tallest volcano in the solar system, Olympus Mons.",
+            "Mars has the largest dust storms in the solar system.",
+            "Mars is about half the size of Earth.",
+            "A year on Mars is 687 Earth days.",
+            "Mars has a very thin atmosphere made mostly of carbon dioxide.",
+            "Mars has polar ice caps made of water and dry ice.",
+            "Mars is often called the 'Red Planet' due to its reddish appearance."
+        ];
+
+        let usedFacts = [];
+
+        document.getElementById('generate').addEventListener('click', function() {
+            if (usedFacts.length === facts.length) {
+                usedFacts = [];
+            }
+            let fact;
+            do {
+                fact = facts[Math.floor(Math.random() * facts.length)];
+            } while (usedFacts.includes(fact));
+            usedFacts.push(fact);
+            document.getElementById('fact').textContent = fact;
+        });
+    </script>
+</body>
+</html>
